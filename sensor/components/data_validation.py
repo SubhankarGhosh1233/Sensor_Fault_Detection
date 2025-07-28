@@ -161,5 +161,4 @@ class DataValidation:
         
         except Exception as e:
             raise SensorException(e, sys)
-        
  '''       

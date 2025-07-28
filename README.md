@@ -42,9 +42,9 @@ print("CSV file saved successfully!")'''
 
 
 MongoDb_Connecting_string= "mongodb+srv://subhankar:Subhankar@cluster1.xsd7qsq.mongodb.net/"
-###### dataBase_name = "apsSensor"
+###### dataBase_name = "ApsSensor"
 ###### collection_name="Sensor"
-#####            self.database_name="apsSensor"
+#####            self.database_name="ApsSensor"
 #####              self.collection_name="Sensor"
 ### setup.py 
 #### sensor

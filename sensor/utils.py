@@ -1,4 +1,4 @@
-'''
+
 import pandas as pd
 from sensor.logger import logging
 from sensor.exception import SensorException
@@ -30,7 +30,7 @@ def get_collection_as_dataframe(database_name:str,collection_name:str)->pd.DataF
     except Exception as e:
         raise SensorException(e, sys)
     
-    
+'''   
 def write_yaml_file(file_path,data:dict):
     try:
         file_dir = os.path.dirname(file_path)
