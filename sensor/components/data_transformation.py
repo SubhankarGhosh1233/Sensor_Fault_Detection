@@ -1,4 +1,4 @@
-'''
+
 from sensor.entity import artifact_entity,config_entity
 from sensor.exception import SensorException
 from sensor.logger import logging
@@ -119,4 +119,4 @@ class DataTransformation:
 
         except Exception as e:
             raise SensorException(e, sys)
-'''                   
+                   

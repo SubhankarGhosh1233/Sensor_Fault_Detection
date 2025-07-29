@@ -49,7 +49,7 @@ def convert_columns_float(df:pd.DataFrame,exclude_columns:list)->pd.DataFrame:
         return df
     except Exception as e:
         raise e
-'''
+
 def save_object(file_path: str, obj: object) -> None:
     try:
         logging.info("Entered the save_object method of utils")
@@ -68,7 +68,7 @@ def load_object(file_path: str, ) -> object:
             return dill.load(file_obj)
     except Exception as e:
         raise SensorException(e, sys) from e
-    
+   
 def save_numpy_array_data(file_path: str, array: np.array):
     """
     Save numpy array data to file
@@ -94,4 +94,4 @@ def load_numpy_array_data(file_path: str) -> np.array:
             return np.load(file_obj)
     except Exception as e:
         raise SensorException(e, sys) from e
-'''
+
