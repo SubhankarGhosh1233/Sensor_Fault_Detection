@@ -1,4 +1,4 @@
-'''
+
 
 import os
 from sensor.entity.config_entity import TRANSFORMER_OBJECT_FILE_NAME,MODEL_FILE_NAME,TARGET_ENCODER_OBJECT_FILE_NAME
@@ -98,4 +98,4 @@ class Predictor:
 
     def __init__(self,model_resolver:ModelResolver):
         self.model_resolver=model_resolver
-'''
+
