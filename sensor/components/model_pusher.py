@@ -1,4 +1,4 @@
-'''
+
 from sensor.predictor import ModelResolver
 from sensor.entity.config_entity import ModelPusherConfig
 from sensor.exception import SensorException
@@ -57,4 +57,3 @@ class Model_pusher:
         
         except Exception as e:
             raise SensorException(e, sys)
-'''

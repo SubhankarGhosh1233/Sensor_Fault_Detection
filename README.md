@@ -56,4 +56,5 @@ In machine learning, an artifact is any file generated or captured during the ex
 ##### entity
 In programming, an entity refers to a distinct object or concept within a system that has its own independent existence and can be identified separately.It represents a real-world or abstract thing about which information is stored and managed. Entities are fundamental building blocks for modeling and organizing data in various programming contexts, including databases and object-oriented programming.  
 
-##### work of predictor.py - to read th model from "saved_models"
+##### work of predictor.py - to read the model from "saved_models"
+##### work of model_pusher.py - to saved the model from "saved_models"

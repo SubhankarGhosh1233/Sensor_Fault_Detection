@@ -28,9 +28,8 @@ class ModelTrainerArtifact:
 class ModelEvaluationArtifact:
     is_model_accepted:bool
     improved_accuracy:float
-'''
+
 @dataclass    
 class ModelPusherArtifact:
     puher_model_dirL:str
     saved_model_dir:str
-'''

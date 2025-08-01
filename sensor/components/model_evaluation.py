@@ -1,4 +1,4 @@
-'''
+
 from sensor.predictor import ModelResolver
 from sensor.entity import config_entity,artifact_entity
 from sensor.exception import SensorException
@@ -97,4 +97,3 @@ class ModelEvaluation:
 
         except Exception as e:
             raise SensorException(e,sys)
-'''
