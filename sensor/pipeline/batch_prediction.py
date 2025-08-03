@@ -1,4 +1,4 @@
-'''
+
 from sensor.exception import SensorException
 from sensor.logger import logging
 from sensor.predictor import ModelResolver
@@ -52,4 +52,4 @@ def start_batch_prediction(input_file_path):
     
     except Exception as e:
             raise SensorException(e,sys)
-'''
+

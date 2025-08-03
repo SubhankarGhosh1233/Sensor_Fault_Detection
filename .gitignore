@@ -10,6 +10,7 @@ saved_models/
 logs
 artifacts
 raw_data
+test.py
 # Distribution / packaging
 .Python
 build/
