@@ -1,8 +1,6 @@
 from setuptools import find_packages,setup
 from typing import List
-#from sensor.components.model_pusher import ModelPusherConfig, Model_pusher
-#from sensor.entity import artifact_entity, config_entity
-#from sensor.utils import load_object
+
 import os
 REQUIREMENT_FILE_NAME="requirements.txt"
 HYPHEN_E_DOT = "-e ."
@@ -29,41 +27,33 @@ setup(
 
 )
 '''
-# Load previous run artifacts (adjust these paths if needed)
-transformer_path = "artifact/<timestamp>/data_transformation/transformer/transformer.pkl"
-target_encoder_path = "artifact/<timestamp>/data_transformation/target_encoder/target_encoder.pkl"
-model_path = "artifact/<timestamp>/model_trainer/model/model.pkl"
 
-# Load artifact objects manually
-transformer = load_object(transformer_path)
-target_encoder = load_object(target_encoder_path)
-model = load_object(model_path)
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_form():
+    if request.method == 'POST':
+        try:
+            file = request.files['file']
+            df = pd.read_csv(file)
+            df.replace({"na": np.nan}, inplace=True)
 
-# Reconstruct artifact classes
-data_transformation_artifact = artifact_entity.DataTransformationArtifact(
-    transform_object_path=transformer_path,
-    transformed_train_path="",  # not required here
-    transformed_test_path="",   # not required here
-    target_encoder_path=target_encoder_path
-)
+            model_resolver = ModelResolver(model_registry="saved_models")
+            transformer = load_object(model_resolver.get_latest_transformer_path())
+            model = load_object(model_resolver.get_latest_model_path())
+            target_encoder = load_object(model_resolver.get_latest_target_encoder_path())
 
-model_trainer_artifact = artifact_entity.ModelTrainerArtifact(
-    model_path=model_path,
-    f1_train_score=0.99,  # dummy scores just for completeness
-    f1_test_score=0.98
-)
+            input_features = [col for col in df.columns if col != TARGET_COLUMN]
+            input_arr = transformer.transform(df[input_features])
+            predictions = model.predict(input_arr)
+            categories = target_encoder.inverse_transform(predictions)
 
-# Create pipeline config
-training_pipeline_config = config_entity.TrainingPipelineConfig()
-model_pusher_config = config_entity.ModelPusherConfig(training_pipeline_config=training_pipeline_config)
+            df["prediction"] = predictions
+            df["category"] = categories
 
-# Run model pusher
-model_pusher = Model_pusher(
-    model_pusher_config=model_pusher_config,
-    data_transformation_artifact=data_transformation_artifact,
-    model_trainer_artifact=model_trainer_artifact
-)
+            results = df[["prediction", "category"]].to_dict(orient="records")
+            return render_template("upload.html", results=results)
 
-model_pusher_artifact = model_pusher.initiate_model_pusher()
-print(f"Model pushed to: {model_pusher_artifact.saved_model_dir}")
+        except Exception as e:
+            return render_template("upload.html", results=[], error=str(e))
+
+    return render_template("upload.html")
 '''
