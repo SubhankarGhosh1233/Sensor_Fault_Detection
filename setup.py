@@ -26,34 +26,3 @@ setup(
     install_requires = get_requirements(),
 
 )
-'''
-
-@app.route('/upload', methods=['GET', 'POST'])
-def upload_form():
-    if request.method == 'POST':
-        try:
-            file = request.files['file']
-            df = pd.read_csv(file)
-            df.replace({"na": np.nan}, inplace=True)
-
-            model_resolver = ModelResolver(model_registry="saved_models")
-            transformer = load_object(model_resolver.get_latest_transformer_path())
-            model = load_object(model_resolver.get_latest_model_path())
-            target_encoder = load_object(model_resolver.get_latest_target_encoder_path())
-
-            input_features = [col for col in df.columns if col != TARGET_COLUMN]
-            input_arr = transformer.transform(df[input_features])
-            predictions = model.predict(input_arr)
-            categories = target_encoder.inverse_transform(predictions)
-
-            df["prediction"] = predictions
-            df["category"] = categories
-
-            results = df[["prediction", "category"]].to_dict(orient="records")
-            return render_template("upload.html", results=results)
-
-        except Exception as e:
-            return render_template("upload.html", results=[], error=str(e))
-
-    return render_template("upload.html")
-'''

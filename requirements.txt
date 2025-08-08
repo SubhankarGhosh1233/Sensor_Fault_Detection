@@ -19,6 +19,5 @@ xgboost==1.6.2
 numpy
 scikit-learn==1.6.1
 flask
-flask-cors
 gunicorn==23.0.0
 -e .
