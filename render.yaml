@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sensor-fault-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    pythonVersion: 3.10
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: MONGO_DB_URL
+        value: YOUR_MONGO_URL_HERE
