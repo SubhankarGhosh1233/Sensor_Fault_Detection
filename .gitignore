@@ -6,7 +6,6 @@ artifact
 # C extensions
 *.so
 prediction/
-# saved_models/
 logs
 artifacts
 raw_data
