@@ -3,7 +3,7 @@ services:
     name: sensor-fault-api
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn --worker-class=gevent --workers=2 app:app
     pythonVersion: 3.10
     envVars:
       - key: FLASK_ENV
