@@ -31,3 +31,4 @@ Sample_File_for_Testing\aps_failure_training_set1.csv
 1. Python
 2. Machine learning algorithms
 3. MongoDB
+4. Flask (for API and web interface)
