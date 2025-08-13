@@ -1,60 +1,33 @@
+
 # Sensor APS (Air Pressure System) Fault Detection
+**Problem Statement:**
 
->>>pip install -r requirments.txt
+The Air Pressure System (APS) is a critical component of a heavy-duty vehicle that uses compressed air to force a piston to provide pressure to the brake pads, slowing the vehicle down. The benefits of using an APS instead of a hydraulic system are the easy availability and long-term sustainability of natural air.
 
->>>python main.py
----
+This is a Binary Classification problem, in which the affirmative class indicates that the failure was caused by a certain component of the APS, while the negative class indicates that the failure was caused by something else.
 
->>>git --version
-git version 2.49.0.windows.1
----
-python-version
->>>python
-Python 3.9.21
->>>python --version
-Python 3.9.21
+**Solution Proposed:**
 
----
->>>conda ctrate -p mvenv python==3.9 -y
->>>conda activate  ssvenv/
->>>
-#### this code is fpr get data from git raw to in project file path
-'''import pandas as pd
+In this project, the system in focus is the Air Pressure system (APS) which generates pressurized air that are utilized in various functions in a truck, such as braking and gear changes. The datasets positive class corresponds to component failures for a specific component of the APS system. The negative class corresponds to trucks with failures for components not related to the APS system.
 
-#### Replace with your GitHub raw CSV URL
-url = "https://raw.githubusercontent.com/skprasad117/Predicting-APS-Failures-in-Scania-Trucks-using-Machine-Learning/refs/heads/main/aps_failure_training_set1.csv"
+The problem is to reduce the cost due to unnecessary repairs. So it is required to minimize the false predictions.
+
+## Deployment
+
+**Platform:** Render
+
+**Server:** gunicorn with gevent workers for async performance
+
+**url:** https://aps-sensor-fault-detection.onrender.com
 
 
-#### Replace with your GitHub raw CSV URL
-url ="https://raw.githubusercontent.com/SubhankarGhosh1233/Python/refs/heads/main/aps_failure_training_set1.csv"
+## Sample File for Testing
+Due to memory limitations on Render’s free tier, please use the small sample CSV provided in this repo for testing the upload functionality.
 
+**File Location:**
+Sample_File_for_Testing\aps_failure_training_set1.csv
 
-
-#### Read CSV from GitHub
-df = pd.read_csv(url)
-
-#### Save to local file in VS Code
-df.to_csv("aps_failure_training_set1.csv", index=False)
-
-print("CSV file saved successfully!")'''
-
-## >>>Need to dump 1st thi dataset into MongoDb<<<
-
-
-MongoDb_Connecting_string= "mongodb+srv://subhankar:Subhankar@cluster1.xsd7qsq.mongodb.net/"
-###### dataBase_name = "ApsSensor"
-###### collection_name="Sensor"
-#####            self.database_name="ApsSensor"
-#####              self.collection_name="Sensor"
-### setup.py 
-#### sensor
-it is the package contained all source code
-### Artifact
-In machine learning, an artifact is any file generated or captured during the execution of a machine learning experiment or job. (outPut)
-
-
-##### entity
-In programming, an entity refers to a distinct object or concept within a system that has its own independent existence and can be identified separately.It represents a real-world or abstract thing about which information is stored and managed. Entities are fundamental building blocks for modeling and organizing data in various programming contexts, including databases and object-oriented programming.  
-
-##### work of predictor.py - to read the model from "saved_models"
-##### work of model_pusher.py - to saved the model from "saved_models"
+# Tech Stack
+1. Python
+2. Machine learning algorithms
+3. MongoDB
