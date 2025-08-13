@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify,render_template,url_for
+from flask import Flask, request, jsonify,render_template,url_for,redirect
 from collections import Counter
 import pandas as pd
 import numpy as np
@@ -71,6 +71,9 @@ def predict():
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+@app.route('/')
+def index():
+    return redirect(url_for('upload_form'))
 
 if __name__ == "__main__":
     print("App running at http://127.0.0.1:5000/upload")
